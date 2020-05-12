@@ -1,0 +1,82 @@
+Document résumant les concepts du MCD, MLD et SQL
+
+Une BASE DE DONNEES est un ensemble structuré de données apparentées qui modélisent un univers réel.
+Système de Gestion de Base de Données (SGBD) est un système qui permet de gérer une BD partagée par plusieurs utilisateurs simultanément.
+ I. Notion Analyse et Conception
+•	Merise  est une méthode française née dans les années 70, développée initialement       par Hubert Tardieu. Elle fut ensuite mise en avant dans les années 80, à la demande du Ministère de l'Industrie qui souhaitait une méthode de conception des SI.
+MERISE est donc une méthode d'analyse et de conception des SI basée sur le principe de la séparation des données et des traitements. Elle possède un certain nombre de modèles (ou schémas) qui sont répartis sur 3 niveaux :
+•	Le niveau conceptuel,
+•	Le niveau logique ou organisationnel,
+•	Le niveau physique.
+
+•	UML «langage de modélisation unifié» est une notation permettant de modéliser un problème de façon standard
+•	Etude Comparative 
+Simplement, Merise est orienté "relationnel" et UML est orienté "objet".
+De plus Merise a pour but la modélisation des traitements et la conception d'un modèle de base de données et UML a pour but lui de générer un modèle de programme orienté objet.
+Merise est plus "abstrait" que UML qui lui représente des objets "plus réaliste" (plus proche de la BDD).
+Merise est une méthode pour concevoir un système orienté traitements et données. Elle propose son propre langage ainsi que des règles pour passer d'un diagramme à l'autre. Les diagrammes les plus utilisés à l'heure actuelle sont les MCD et MPD pour concevoir sa base de données.
+
+UML est un langage de modélisation et non une méthode. UML propose une boîte à outils (à dessins) pour faire de la modélisation de tout type de système d'information. (On peut utiliser un diagramme d'activité pour modéliser un processus métier qui ne sera pas forcément informatisé).
+Il faut utiliser une méthode qui utilise le langage UML pour concevoir le système. (Exemple UP, RUP, 2TUP, OpenUP, et les méthodes agiles éventuellement)
+
+II. Analyse et Conception des MCD
+ 
+A)	MCD
+Le MCD permet une représentation graphique de l’organisation optimisée des données qui sont regroupées en entités, et mettant évidence des relations entre ces entités.
+L'élaboration du MCD passe par les étapes suivantes :
+	La mise en place de règles de gestion (si celles-ci ne vous sont pas données),
+	L'élaboration du dictionnaire des données,
+	La recherche des dépendances fonctionnelles entre ces données,
+	L'élaboration du MCD (création des entités puis des associations puis ajout des cardinalités).
+● Les entités sont des familles d’objets ayant les mêmes caractéristiques (ou propriétés).
+● Les attributs sont des informations élémentaires qui permettent de décrire une entité ou une association.
+● Les Occurrences sont des objets issus de l’entité ou d’une  copie de l’entité.
+● Les Cardinalités Le nombre minimal et maximal de fois qu’une occurrence d’une entité entre en relation avec une autre occurrence d’une autre entité.
+● Formalisme de Représentation
+ 
+B) MLD Le modèle logique des données consiste à décrire la structure de données utilisée sans faire référence à un langage de programmation. Il s'agit donc de préciser le type de données utilisées lors des traitements. Ainsi, le modèle logique est dépendant du type de base de données utilisé.
+● MLDR Modèle logique de données relationnelles
+● Modèle Relationnel : ce modèle traduit les concepts étudiés dans le modèle Entité-Association comme suit:
+	les entités et certaines associations sont traduites en relations ou tables;
+	les attributs en colonnes;
+	les occurrences en enregistrements ou lignes ou encore tuples;
+	les identifiants candidats en clés candidates;
+	les identifiants primaires en clés primaires;
+	Les identifiants migrants en clés étrangères ou secondaires.
+● Règles de passage du MCD au MLDR
+Le MCD ne peut pas être implanté dans une base de données sans modification. Il est obligatoire de transformer ce modèle. On dit qu’on effectue un passage du modèle conceptuel de données vers le modèle logique de données.
+Il existe 3 règles de passages 
+ 	règles de passages 1
+Cas de l’association (X, 1) : (Y, N) avec X{0, 1} et Y{0, 1, m}.
+L’entité à côté de laquelle se trouve la cardinalité maximale (Y, N) donne son identifiant à l’autre.
+La relation Client donne sa clé primaire à la relation Commandes notée appelée clé étrangère ou secondaire.
+ 	règles de passages 2
+Cas de l’association (X, N) : (Y, N) avec X et Y{0, 1, m}
+L’association devient une relation à part entière et reçois les clés primaires provenant des deux relations.
+La relation Passer devient une relation et reçois les clés primaires des relations Commandes et Client. Ces dernières sont appelées clés étrangères.
+ 	règles de passages 3
+Cas de l’association (X, 1) : (Y, 1) avec X et Y{0, 1}.
+L’une des relations donne sa clé primaire à l’autre.
+Le Client passe une et une commande. Donc la relation Client donne sa clé primaire à la relation Commandes.
+•	Formalisme de Représentation
+PIECE(codePiece ,libellePiece)
+COMPOSITION(refProduit, libelleProduit)
+COMPOSITION (#pieceComposee , #pieceComposante)
+
+IV. SQL
+Le  langage SQL (Structured Query Language) est un langage d’interrogation d’une base de données. Il permet la définition, la manipulation et le contrôle des bases de données relationnelles. Il est composé de cinq sous-langages:
+✓ Langage de définition des données (LDD) :
+          CREATE : pour créer les objets.
+          DROP : pour supprimer les objets.
+
+          ALTER : pour modifier les objets 
+          RENAME pour renommer des objets.
+          TRUNCATE 
+
+✓ Langage de manipulation de données (LMD) :
+          INSERT : pour insérer les données.
+          UPDATE : pour mettre à jour les données 
+          DELETE : pour supprimer les données 
+
+✓ Langage d'interrogation de données (LID) : 
+          SELECT : pour interroger les données.
